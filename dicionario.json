@@ -1,20 +1,54 @@
 pokedex=[
 	{
-		"nome" : "picaxu",
+		"nome" : "Charmander",
 		"poder" : 20,
 		"vida" : 200,
 		"defesa" : 12
 	},
 	{
-		"nome" : "xamando",
+		"nome" : "Bulbassauro",
 		"poder" : 25,
 		"vida" : 100,
 		"defesa" : 10
 	},
 	{
-		"nome" : "pidijet",
+		"nome" : "Squirtle",
 		"poder" : 15,
 		"vida" : 300,
 		"defesa" : 10
 	}
+
+	{
+		"nome" : "Lugia",
+		"poder" : 30,
+		"vida" : 250,
+		"defesa" : 10
+	}
+
+	{
+		"nome" : "Zubat",
+		"poder" : 15,
+		"vida" : 150,
+		"defesa" : 8
+	}
+
+	{
+		"nome" : "Ratata",
+		"poder" : 20,
+		"vida" : 200,
+		"defesa" : 13
+	}
+	{
+		"nome" : "Deoxys",
+		"poder" : 25,
+		"vida" : 270,
+		"defesa" : 13
+	}
+
+
+
+
+
+
+
 ]

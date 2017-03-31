@@ -1,10 +1,15 @@
+from funcao_batalha import batalha
+from dicionario import pokedex
+
 while True:
+	print("Charmander")
+	print("Bulbassauro")
+	print("Squirtle")
 	escolha = input("Escolha um dos pokemons iniciais. ")
-	
-
-
-
-
+	pokemon=pokedex[escolha]
+	pp=pokemon["poder"]
+	vp=pokemon["vida"]
+	dp=pokemon["defesa"]
 	pergunta=input("Escolha se quer passear ou se quer dormir. ")
 	if pergunta="dormir":
 		break
