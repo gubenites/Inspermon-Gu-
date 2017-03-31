@@ -1,5 +1,8 @@
 from funcao_batalha import batalha
-from dicionario import pokedex
+
+import json
+with open('dicionario.json') as arquivo:
+	pokedex = json.load(arquivo)
 
 while True:
 	print("Charmander")
@@ -11,17 +14,17 @@ while True:
 	vp=pokemon["vida"]
 	dp=pokemon["defesa"]
 	pergunta=input("Escolha se quer passear ou se quer dormir. ")
-	if pergunta="dormir":
+	if pergunta=="dormir":
 		break
-	elif pergunta="passear":
+	elif pergunta=="passear":
 		x = random.choice(pokedex)
 		print(x)		
 		p=x["poder"]
 		v=x["vida"]
 		d=x["defesa"]
 		batalha(p,v,d)
-		if v1=0:
+		if vp==0:
 			print("Você perdeu. ")
 			break
-		elif v1!=0:
+		elif v==0:
 			print("Parabens! ")
