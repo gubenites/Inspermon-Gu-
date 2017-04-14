@@ -1,22 +1,46 @@
+import random as randint
+
+import random
+
 import json
 
 with open('dicionario.json') as arquivo:
 	pokedex = json.load(arquivo)
 
-suapokedex=[]
-exp=0
 print(" ")
-print("0 - Charmander")
-print("1 - Bulbassauro")
-print("2 - Squirtle")
+print("Bem vindo!")
+print("1 - Começar um jogo novo")
+print("2 - Carregar jogo")
 print(" ")
-escolha = int(input("Escolha um dos pokemons iniciais: "))
-pokemon=pokedex[escolha]
+res=int(input("Selecione uma opção: "))
+
+if res == 1:
+	suapokedex=[]
+	exp=0
+	print(" ")
+	print("0 - Charmander")
+	print("1 - Bulbassauro")
+	print("2 - Squirtle")
+	print(" ")
+	escolha = int(input("Escolha um dos pokemons iniciais: "))
+	pokemon=pokedex[escolha]
+
+elif res==2:
+	res=input("Qual o nome do arquivo? ")
+	res=res+".json"
+	with open(res) as arquivo:
+		progresso = json.load(arquivo)
+	pokemon=progresso["pokemon_jogador"]
+	exp=progresso["xp_jogador"]
+	suapokedex=progresso["insperdex"]
+	pass
+
 np=pokemon["nome"]
 pp=pokemon["ataque"]
 vp=pokemon["vida"]
 dp=pokemon["defesa"]
 vida_max=vp
+
 while True:
 	print(" ")
 	print("O seu pokemon é {0}, vida: {1}, ataque: {2}, defesa: {3}.".format(np,vp,pp,dp))
@@ -30,7 +54,22 @@ while True:
 	pergunta=int(input("Escolha o que você quer fazer: "))
 	print("  ")
 	if pergunta==2:
-		print("Ok, até a próxima!")
+		print("1 - Sim")
+		print("2 - Não")
+		res=int(input("Deseja salvar? "))
+		if res==2:
+			print("Ok, até a próxima!")
+		elif res==1:
+			status=dict(nome=np, ataque=pp, vida=vp, defesa=dp)
+			progresso=dict(pokemon_jogador=status, xp_jogador=exp, insperdex=suapokedex)
+			progresso=json.dumps(progresso, indent=4, sort_keys=False)
+			sal=input("Qual o nome do arquivo? ")
+			sal=sal+".json"
+			arquivo = open(sal,"w")
+			arquivo.write(progresso)
+			arquivo.close()
+			print("Jogo salvo, volte logo!")
+			break
 	elif pergunta==1:
 		import random as randint
 		print("Você encontrou um oponente!")
@@ -110,10 +149,23 @@ while True:
 						if vp<=0:
 							vp=0
 						break
+
 		if vp==0:
 			print(" ")
 			print("Seu pokemon morreu. ")
 			print("Game over!")
+			print(" ")
+			print("1 - Ver pokedex")
+			print("2 - Fim de jogo")
+			res=int(input("O que fazer? "))
+			print(" ")
+			if res==1:
+				print("Pokemons encontrados: ")
+				for i in range (len(suapokedex)):
+					print(suapokedex[i])
+			elif res==2:
+				print("Até a próxima!")
+				pass
 			break
 		elif v==0:
 			ra=random.randint(70,160)/100
@@ -123,7 +175,7 @@ while True:
 			print(" ")
 			print("Parabéns, você ganhou a luta! ")
 			print("Adquiriu {0} de experiência!".format(a))
-
+			
 	elif pergunta==3:
 		print("Bem vindo a enfermaria.")
 		print("Recuperar sua vida custa 30 pontos de experiência.")
@@ -180,7 +232,8 @@ while True:
 					print("Você não tem experiencia suficiente.")				
 			if resp==4:
 				print("Boa luta!")
-				break
+				break	
+
 	elif pergunta==5:
 		print("Pokemons encontrados: ")
 		for i in range (len(suapokedex)):
