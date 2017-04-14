@@ -1,48 +1,97 @@
 [
 	{
 		"nome" : "Charmander",
-		"poder" : 20,
+		"ataque" : 20,
 		"vida" : 200,
-		"defesa" : 12
+		"defesa" : 12,
+		"experiencia" : 30
 	},
 	{
 		"nome" : "Bulbassauro",
-		"poder" : 25,
-		"vida" : 100,
-		"defesa" : 10
+		"ataque" : 25,
+		"vida" : 170,
+		"defesa" : 10,
+		"experiencia" : 20
 	},
 	{
 		"nome" : "Squirtle",
-		"poder" : 15,
+		"ataque" : 17,
 		"vida" : 300,
-		"defesa" : 10
+		"defesa" : 10,
+		"experiencia" : 25
 	},
 
 	{
 		"nome" : "Lugia",
-		"poder" : 30,
+		"ataque" : 30,
 		"vida" : 250,
-		"defesa" : 10
+		"defesa" : 10,
+		"experiencia" : 60
 	},
 
 	{
 		"nome" : "Zubat",
-		"poder" : 15,
+		"ataque" : 15,
 		"vida" : 150,
-		"defesa" : 8
+		"defesa" : 8,
+		"experiencia" : 18
 	},
 
 	{
 		"nome" : "Ratata",
-		"poder" : 20,
+		"ataque" : 20,
 		"vida" : 200,
-		"defesa" : 13
+		"defesa" : 13,
+		"experiencia" : 24
 	},
 	{
-		"nome" : "Deoxys",
-		"poder" : 25,
-		"vida" : 270,
-		"defesa" : 13
+		"nome" : "Widdle",
+		"ataque" : 18,
+		"vida" : 100,
+		"defesa" : 10,
+		"experiencia" : 10
+	},
+	{
+		"nome" : "Goldeen",
+		"ataque" : 23,
+		"vida" : 80,
+		"defesa" : 14 ,
+		"experiencia" : 15
+	},
+	{
+		"nome" : "Cubone",
+		"ataque" : 18,
+		"vida" : 150,
+		"defesa" : 14,
+		"experiencia" : 20
+	},
+	{
+		"nome" : "Golem",
+		"ataque" : 13,
+		"vida" : 200,
+		"defesa" : 18,
+		"experiencia" : 27
+	},
+	{
+		"nome" : "Hypno",
+		"ataque" : 16,
+		"vida" : 160,
+		"defesa" : 20,
+		"experiencia" : 25
+	},
+	{
+		"nome" : "Rapidash",
+		"ataque" : 30,
+		"vida" : 220,
+		"defesa" : 8,
+		"experiencia" : 35
+	},
+	{
+		"nome" : "Rhydon",
+		"ataque" : 20,
+		"vida" : 180,
+		"defesa" : 10,
+		"experiencia" : 28
 	}
 
 
