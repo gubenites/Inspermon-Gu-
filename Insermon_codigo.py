@@ -19,6 +19,7 @@ while True:
 	print("1 - Passear")
 	print("2 - Dormir")
 	print("3 - Enfermaria")
+	print("4 - Academia")
 	pergunta=int(input("Escolha o que você quer fazer: "))
 	print("  ")
 	if pergunta==2:
@@ -32,29 +33,49 @@ while True:
 		d=x["defesa"]
 		xp=x["experiencia"]
 		print("O seu oponente é {0}, vida: {1}, ataque: {2}, defesa: {3}.".format(n,v,p,d))
-		print(" ")
 		while vp > 0 and v > 0:
 			print("Sua vida é {0}".format(vp))
 			print("A vida do oponente é {0}".format(v))
 			print(" ")
-			seuataque=(pp-d)
+			print("1 - atacar")
+			print("2 - tentar fugir")
+			print(" ")
+			acao=int(input("O que deseja fazer? "))
+			if acao == 1:
+				seuataque=(pp-d)
 				if seuataque<0:
 					seuataque=0
 				v=v-seuataque
 				if v<=0:
 					v=0
 					break
-				opoataque=(p*-dp*)	
+				opoataque=(p-dp)	
 				if opoataque<0:
 					opoataque=0	
 				vp=vp-opoataque
 				if vp<=0:
 					vp=0
 					break
+			elif acao == 2:
+				from random import randint
+				a=randint(0,99)
+				if a < 39:
+					print("Você conseguiu fugir!")
+					break
+				else:
+					print("Você não conseguiu fugir")
+					opoataque=(p-dp)	
+					if opoataque<0:
+						opoataque=0
+					vp=vp-opoataque
+					if vp<=0:
+						vp=0
+						break
 		if vp==0:
-				print(" ")
-				print("Seu pokemon morreu. ")
-				print("Game over!")
+			print(" ")
+			print("Seu pokemon morreu. ")
+			print("Game over!")
+			break
 		elif v==0:
 			ra=random.randint(70,160)/100
 			ran=random.randint(10,50)/100
@@ -78,3 +99,46 @@ while True:
 			else:
 				print("Você não tem experiencia suficiente.")
 		print("Boa sorte lá fora!")
+
+	elif pergunta==4:
+		while True:
+			print(" ")
+			print("Bem vindo a academia, aqui você pode melhorar seu pokemon.")
+			print("1 - Melhorar ataque (50 pontos de exp)")
+			print("2 - Melhorar defesa (50 pontos de exp)")
+			print("3 - Melhorar vida (70 pontos de exp)")
+			print("4 - Sair")
+			print(" ")
+			resp=int(input("O que deseja fazer? "))
+			print(" ")
+			if resp==1:
+				if exp>=50:
+					t=random.randint(1,3)
+					exp=exp-50
+					pp=pp+t
+					print("Seu novo ataque é {0}".format(pp))
+					print("Sua experiência é igual a {0}".format(exp))
+				else:
+					print("Você não tem experiencia suficiente.")
+			if resp==2:
+				if exp>=50:
+					r=random.randint(1,3)
+					exp=exp-50
+					dp=dp+r
+					print("Sua nova defesa é {0}".format(dp))
+					print("Sua experiência é igual a {0}".format(exp))
+				else:
+					print("Você não tem experiencia suficiente.")	
+			if resp==3:
+				if exp>=70:
+					exp=exp-70
+					a=random.randint(20,35)
+					vida_max=vida_max+a
+					vp=vp+a
+					print("Sua nova vida é {0} e sua vida máxima é {1}.".format(vp,vida_max))
+					print("Sua experiência é igual a {0}".format(exp))				
+				else:
+					print("Você não tem experiencia suficiente.")				
+			if resp==4:
+				print("Boa luta!")
+				break
