@@ -32,6 +32,7 @@ while True:
 	if pergunta==2:
 		print("Ok, até a próxima!")
 	elif pergunta==1:
+		import random as randint
 		print("Você encontrou um oponente!")
 		x = randint.choice(pokedex)
 		suapokedex.append(x)
@@ -41,23 +42,29 @@ while True:
 		d=x["defesa"]
 		xp=x["experiencia"]
 		print("O seu oponente é {0}, vida: {1}, ataque: {2}, defesa: {3}.".format(n,v,p,d))
+		print(" ")
 		while vp > 0 and v > 0:
 			print("Sua vida é {0}".format(vp))
 			print("A vida do oponente é {0}".format(v))
 			print(" ")
 			print("1 - atacar")
 			print("2 - tentar fugir")
+			print("3 - simular batalha")
 			print(" ")
 			acao=int(input("O que deseja fazer? "))
 			if acao == 1:
-				seuataque=(pp-d)
+				a=random.randint(60,140)/100
+				b=random.randint(60,140)/100
+				e=random.randint(80,145)/100
+				c=random.randint(80,145)/100
+				seuataque=int((pp*a-d*e))
 				if seuataque<0:
 					seuataque=0
 				v=v-seuataque
 				if v<=0:
 					v=0
 					break
-				opoataque=(p-dp)	
+				opoataque=int((p*b-dp*c))	
 				if opoataque<0:
 					opoataque=0	
 				vp=vp-opoataque
@@ -72,12 +79,36 @@ while True:
 					break
 				else:
 					print("Você não conseguiu fugir")
-					opoataque=(p-dp)	
+					b=random.randint(60,140)/100
+					c=random.randint(80,145)/100
+					opoataque=int((p*b-dp*c))	
 					if opoataque<0:
 						opoataque=0
 					vp=vp-opoataque
 					if vp<=0:
 						vp=0
+						break
+			elif acao ==3:
+				res=int(input("Parar de simular quando atingir nivel de vida for inferior a: "))
+				while vp > 0 and v > 0:
+					a=random.randint(60,140)/100
+					b=random.randint(60,140)/100
+					e=random.randint(80,145)/100
+					c=random.randint(80,145)/100
+					seuataque=int((pp*a-d*e))
+					if seuataque<0:
+						seuataque=0
+					v=v-seuataque
+					if v<=0:
+						v=0
+						break
+					opoataque=int((p*b-dp*c))	
+					if opoataque<0:
+						opoataque=0	
+					vp=vp-opoataque
+					if vp<=res:
+						if vp<=0:
+							vp=0
 						break
 		if vp==0:
 			print(" ")
