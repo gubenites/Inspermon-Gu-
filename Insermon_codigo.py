@@ -1,3 +1,9 @@
+import json
+
+with open('dicionario.json') as arquivo:
+	pokedex = json.load(arquivo)
+
+suapokedex=[]
 exp=0
 print(" ")
 print("0 - Charmander")
@@ -20,6 +26,7 @@ while True:
 	print("2 - Dormir")
 	print("3 - Enfermaria")
 	print("4 - Academia")
+	print("5 - Ver minha pokedex")
 	pergunta=int(input("Escolha o que você quer fazer: "))
 	print("  ")
 	if pergunta==2:
@@ -27,6 +34,7 @@ while True:
 	elif pergunta==1:
 		print("Você encontrou um oponente!")
 		x = randint.choice(pokedex)
+		suapokedex.append(x)
 		n=x["nome"]
 		p=x["ataque"]
 		v=x["vida"]
@@ -142,3 +150,7 @@ while True:
 			if resp==4:
 				print("Boa luta!")
 				break
+	elif pergunta==5:
+		print("Pokemons encontrados: ")
+		for i in range (len(suapokedex)):
+			print(suapokedex[i])
