@@ -3,27 +3,33 @@ import random as randint
 import random
 
 import json
-
 with open('dicionario.json') as arquivo:
 	pokedex = json.load(arquivo)
 
-print(" ")
-print("Bem vindo!")
-print("1 - Começar um jogo novo")
-print("2 - Carregar jogo")
-print(" ")
+print(""" 
+	Bem vindo!
+	1 - Começar um jogo novo
+    	2 - Carregar jogo
+    	""")
 res=int(input("Selecione uma opção: "))
 
 if res == 1:
 	suapokedex=[]
 	exp=0
-	print(" ")
-	print("0 - Charmander")
-	print("1 - Bulbassauro")
-	print("2 - Squirtle")
-	print(" ")
+	print("""
+	0 - Charmander
+	1 - Bulbassauro
+	2 - Squirtle
+	""")
 	escolha = int(input("Escolha um dos pokemons iniciais: "))
-	pokemon=pokedex[escolha]
+	if escolha == 0 or escolha==1 or escolha==2:
+		pokemon=pokedex[escolha]
+		np=pokemon["nome"]
+		pp=pokemon["ataque"]
+		vp=pokemon["vida"]
+		dp=pokemon["defesa"]
+		vida_max=vp
+
 
 elif res==2:
 	res=input("Qual o nome do arquivo? ")
@@ -33,34 +39,37 @@ elif res==2:
 	pokemon=progresso["pokemon_jogador"]
 	exp=progresso["xp_jogador"]
 	suapokedex=progresso["insperdex"]
-	pass
-
-np=pokemon["nome"]
-pp=pokemon["ataque"]
-vp=pokemon["vida"]
-dp=pokemon["defesa"]
-vida_max=vp
-
+	np=pokemon["nome"]
+	pp=pokemon["ataque"]
+	vp=pokemon["vida"]
+	dp=pokemon["defesa"]
+	vida_max=pokemon["vidamax"]
+	
 while True:
 	print(" ")
 	print("O seu pokemon é {0}, vida: {1}, ataque: {2}, defesa: {3}.".format(np,vp,pp,dp))
 	print("Sua experiência é igual a {0}".format(exp))
-	print(" ")
-	print("1 - Passear")
-	print("2 - Dormir")
-	print("3 - Enfermaria")
-	print("4 - Academia")
-	print("5 - Ver minha pokedex")
+	print("""
+	1 - Passear
+	2 - Dormir
+	3 - Enfermaria
+	4 - Academia
+	5 - Ver minha pokedex
+	""")
 	pergunta=int(input("Escolha o que você quer fazer: "))
 	print("  ")
 	if pergunta==2:
-		print("1 - Sim")
-		print("2 - Não")
+		print("""
+	1 - Sim
+	2 - Não
+	3 - Voltar ao jogo
+		""")
 		res=int(input("Deseja salvar? "))
 		if res==2:
 			print("Ok, até a próxima!")
+			break
 		elif res==1:
-			status=dict(nome=np, ataque=pp, vida=vp, defesa=dp)
+			status=dict(nome=np, ataque=pp, vida=vp, defesa=dp, vidamax=vida_max)
 			progresso=dict(pokemon_jogador=status, xp_jogador=exp, insperdex=suapokedex)
 			progresso=json.dumps(progresso, indent=4, sort_keys=False)
 			sal=input("Qual o nome do arquivo? ")
@@ -70,6 +79,8 @@ while True:
 			arquivo.close()
 			print("Jogo salvo, volte logo!")
 			break
+		elif res==3:
+			pass
 	elif pergunta==1:
 		import random as randint
 		print("Você encontrou um oponente!")
@@ -85,11 +96,11 @@ while True:
 		while vp > 0 and v > 0:
 			print("Sua vida é {0}".format(vp))
 			print("A vida do oponente é {0}".format(v))
-			print(" ")
-			print("1 - atacar")
-			print("2 - tentar fugir")
-			print("3 - simular batalha")
-			print(" ")
+			print("""
+	1 - atacar
+	2 - tentar fugir
+	3 - simular batalha
+			""")
 			acao=int(input("O que deseja fazer? "))
 			if acao == 1:
 				a=random.randint(60,140)/100
@@ -151,12 +162,12 @@ while True:
 						break
 
 		if vp==0:
-			print(" ")
-			print("Seu pokemon morreu. ")
-			print("Game over!")
-			print(" ")
-			print("1 - Ver pokedex")
-			print("2 - Fim de jogo")
+			print(""" 
+			Seu pokemon morreu.
+			Game over!
+			
+			1 - Ver pokedex
+			2 - Fim de jogo""")
 			res=int(input("O que fazer? "))
 			print(" ")
 			if res==1:
@@ -177,10 +188,12 @@ while True:
 			print("Adquiriu {0} de experiência!".format(a))
 			
 	elif pergunta==3:
-		print("Bem vindo a enfermaria.")
-		print("Recuperar sua vida custa 30 pontos de experiência.")
-		print("1 - Curar")
-		print("2 - Sair")
+		print("""
+	Bem vindo a enfermaria.
+	Recuperar sua vida custa 30 pontos de experiência.
+	1 - Curar
+	2 - Sair
+	""")
 		res=int(input("O que quer fazer: "))
 		if res==1:
 			if exp>=30:
@@ -193,13 +206,13 @@ while True:
 
 	elif pergunta==4:
 		while True:
-			print(" ")
-			print("Bem vindo a academia, aqui você pode melhorar seu pokemon.")
-			print("1 - Melhorar ataque (50 pontos de exp)")
-			print("2 - Melhorar defesa (50 pontos de exp)")
-			print("3 - Melhorar vida (70 pontos de exp)")
-			print("4 - Sair")
-			print(" ")
+			print("""
+			Bem vindo a academia, aqui você pode melhorar seu pokemon.
+			1 - Melhorar ataque (50 pontos de exp)
+			2 - Melhorar defesa (50 pontos de exp)
+			3 - Melhorar vida (70 pontos de exp)
+			4 - Sair
+			""")
 			resp=int(input("O que deseja fazer? "))
 			print(" ")
 			if resp==1:
@@ -237,4 +250,4 @@ while True:
 	elif pergunta==5:
 		print("Pokemons encontrados: ")
 		for i in range (len(suapokedex)):
-			print(suapokedex[i])
+			print(suapokedex[i])	
